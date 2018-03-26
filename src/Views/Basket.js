@@ -6,16 +6,31 @@ import data from '../Api/data';
 import { Grid, Row, Col, Thumbnail } from 'react-bootstrap';
 class Home extends Component {
   render() {
+
+    const basketItems = JSON.parse(localStorage.getItem('basketItems'));
     return (
       <div className="App">
         <Header />
         <div>
           Basket
           </div>
-        <Footer />
-      </div>
-    );
-  }
-}
+        <table>
+          <tbody>
+<tr><th>name </th><th> qty </th> </tr>
+            {basketItems.map(item => (
+              <tr>
+              <td>{item.name}</td>
+                <td>{item.qty}</td>
+              </tr>
+            ))
+            }
+          </tbody>
+          </table>
 
-export default Home;
+            <Footer />
+      </div>
+          );
+        }
+      }
+      
+      export default Home;
